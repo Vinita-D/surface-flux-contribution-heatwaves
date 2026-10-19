@@ -1,0 +1,10 @@
+&SPECIES_PARAMS
+ PSPECIES="BC",               ! Tracer name
+ PCRAIN_AERO=1.0,             ! Below-cloud scavenging (particles) - Crain (crain_aero) [Grythe et al. (2017)]
+ PCSNOW_AERO=1.0,             ! Below-cloud scavenging (particles) - Csnow (csnow_aero) [Grythe et al. (2017)]
+ PCCN_AERO=0.9,               ! In-cloud scavenging (particles) - CCNeff (ccn_aero) [Grythe et al. (2017)]
+ PIN_AERO=0.1,                ! In-cloud scavenging (particles) - INeff (in_aero) [Grythe et al. (2017)]
+ PDENSITY=2000.0,             ! Dry deposition (particles) - rho
+ PDIA=2.0E-08,                ! Dry deposition (particles) - dquer [Tunved et al. (2013)]
+ PDSIGMA=1.5,                 ! Dry deposition (particles) - dsig [Tunved et al. (2013)]
+ /

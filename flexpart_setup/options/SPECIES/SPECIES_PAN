@@ -1,0 +1,9 @@
+&SPECIES_PARAMS
+ PSPECIES="PAN"               ! Tracer name
+ PWETA_GAS=5.04E-5,           ! Below-cloud scavenging (gases) - A (weta_gas) [Calculated accord to Asman (1995)]
+ PWETB_GAS=0.62,              ! Below-cloud scavenging (gases) - B (wetb_gas) [Asman (1995)]
+ PRELDIFF=2.6,                ! Dry deposition (gases) - D [Wesely (1989)]
+ PHENRY=3.6E+0,               ! Dry deposition (gases) - Henrys const. [Wesely (1989)]
+ PF0=0.1,                     ! Dry deposition (gases) - f0 (reactivity) [Wesely (1989)]
+ PWEIGHTMOLAR=121.0,          ! molweight
+ /

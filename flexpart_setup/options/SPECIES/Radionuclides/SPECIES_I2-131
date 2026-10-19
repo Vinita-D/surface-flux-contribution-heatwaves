@@ -1,0 +1,10 @@
+&SPECIES_PARAMS
+ PSPECIES="I2-131",           ! Tracer name: ELEMENTAL IODINE 131
+ PDECAY=693382.0,             ! Species half life [https://www.internetchemie.info/chemische-elemente/isotope.php]
+ PWETA_GAS=8.0E-05,           ! Below-cloud scavenging (gases) - A (weta_gas) [Asman (1995), Paesler-Sauer (2003)]
+ PWETB_GAS=0.62,              ! Below-cloud scavenging (gases) - B (wetb_gas) [Asman (1995)]
+ PRELDIFF=2.7,                ! Dry deposition (gases) - D
+ PHENRY=100000.0,             ! Dry deposition (gases) - Henrys const.
+ PF0=0.1,                     ! Dry deposition (gases) - f0 (reactivity)
+ PWEIGHTMOLAR=-9.9,           ! molweight
+ /

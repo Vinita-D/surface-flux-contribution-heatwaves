@@ -1,0 +1,10 @@
+&SPECIES_PARAMS
+ PSPECIES="DUST-FINE",        ! Tracer name
+ PCRAIN_AERO=1.0,             ! Below-cloud scavenging (particles) - Crain (crain_aero) [arbitrary value]
+ PCSNOW_AERO=1.0,             ! Below-cloud scavenging (particles) - Csnow (csnow_aero) [arbitrary value]
+ PCCN_AERO=0.15,              ! In-cloud scavenging (particles) - CCNeff (ccn_aero) [arbitrary value]
+ PIN_AERO=0.02,               ! In-cloud scavenging (particles) - INeff (in_aero) [arbitrary value]
+ PDENSITY=2.5E3,              ! Dry deposition (particles) - rho [arbitrary value]
+ PDIA=2.2E-07,                ! Dry deposition (particles) - dquer [arbitrary value]
+ PDSIGMA=2.24,                ! Dry deposition (particles) - dsig [arbitrary value]
+ /

@@ -1,0 +1,183 @@
+﻿Specifies all physico-chemical properties for the species.
+
+To generate an overview table compile the specoverview.f90 program
+
+gfortran specoverview.f90 -o specoverview
+./specoverview
+---------------------------------------------------------------------------------------------------------------------------
+WET DEPOSITION
+
+Below-cloud scavenging
+- Gases:
+    A and B are the parameters for below-cloud scavenging defined by Eq. scavenging coefficient = A x precipitation-rate^B
+        If you migrate from FLEXPART version 9.2 and below this is equal to A and B as it was.
+- Particles:
+    A "rain collection efficiency"
+    B "snow collection efficiency" are both defined by Equations 46-47.
+    Suggested values for particle scavenging are A=1.0,B=1.0.
+    Using values A=0.2 and B=0.2 will give results close to the old scavenging scheme of FLEXPART version 9.2 and below.
+
+In-cloud scavenging
+- Gases:
+    Is switched on if Ai or Bi are given greater than 0
+    If you migrate from FLEXPART version 9.2 and below this is equal to Ai and Bi should be set to 1
+- Particles:
+    Ai ("Cloud Condensation Nuclei (CCN) efficiency")
+    Bi ("Ice Nuclei (IN) efficiency")                  are both from Eq. 51.
+    Suggested values for particle scavenging are  Ai=0.9 and Bi=0.1.
+    Using values Ai=0.9 and Bi=0.9 should give results cto the old scavenging scheme of FLEXPART version 9.2 and below.
+---------------------------------------------------------------------------------------------------------------------------
+DRY DEPOSITION
+- Gases:
+    D is the diffusivity of water vapor and
+    D_i is the diffusivity of the species,
+    H is the effective Henry’s constant,
+    f0 varies between 0 and 1 and gives the reactivity of a species relative to that of ozone. For non-reactive species f0 is 0, for slightly reactive it is 0.1 and for highly reactive it is 1.
+    Dry deposition of gases is switched off by negative D.
+
+- Particles:
+    rho specifies the density of the substance,
+    dquer its mean diameter
+    dsig the measure of variation.
+    If no detailed information for deposition velocity calculation is available, a constant deposition velocity vd [cm s-1] can be used.
+    Dry deposition of particles is switched off by negative rho.
+---------------------------------------------------------------------------------------------------------------------------
+OH REACTION:
+    can be turned on by giving parameter C [cm^3/molecule/sec]], D [K] and N [no unit] positive values, defined by Eq. 39.
+    OH reaction is switched off by negative C.
+---------------------------------------------------------------------------------------------------------------------------
+Optionally  emission variation information can be added at the end of the file, defined as following: Since FLEXPART version 6.0, emission factors can be defined that change the temporal variation of particle releases. This is useful, for instance, to simulate the typical daily and weekly cycle of anthropogenic emissions. The emission factors are given in the file of the corresponding species SPECIES_nnn, where nnn is the species number defined in file RELEASES. If no emission variation information is given, emission rates for species nnn are taken as constant. Release rates can vary with the hour of the day and with the day of the week, according to the local time at the release location. Emission factors must be 1 on average. 24 hourly as well as 7 daily values must be specified. Furthermore, different disaggregation factors must be given for area sources and for point sources. FLEXPART distinguishes between the two using the lower altitude of the release box: area sources are assumed to start below 0.5 m above the ground, whereas point sources are assumed to be higher. Please note that when this option is used, it is not so easy to determine the maximum number of particles present at a particular time of the model run. It might then be necessary to increase the parameter maxpart to a higher value than what would otherwise be needed.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Author: C. Maurer (GeoSphere Austria), 9.2023 (Radionuclides), M.D. Mulder (Other SPECIES)
+
+FLEXPART V11 SPECIES files now contain literature references.
+
+Radionculides can be partioned into three main groups:
+
+IODINE (I-131)
+
+Iodine is typically released in gaseous reactive elemental, gaseous nonreactive organic and particulate form (Nair et al., 2000).
+The release fractions of the three iodine components may vary significantly from sight to sight (Sportisse, 2007).
+The particulate form is centred around 0.5 um with a gaseous fraction of 15% (for a total atmospheric aerosol concentration of 100 ugm-3),
+35% (for 30 ugm-3) and 60% (for 10 ugm-3) according to a condensation/evaporation model (Sportisse, 2007). It is reasonable to assume that
+there would be increased sorption of iodine onto aerosols with increased humidity resulting in a higher rate of transformation of the elemental
+form of iodine into the particulate form (Nair et al., 2000). Measurements after the Chernobyl accident in Muenchen indicated a growth of the organic part 
+(from 43% to 59% of the total mass, including gas and aerosols) due to the atmospheric ageing (Sportisse, 2007). No transformations of any kind are 
+accounted for in FLEXPART! Dry and wet removal are most effective for elemental iodine and least effective for organic iodine (e.g., Nair et al., 2000).
+Particle-bound iodine is treated analogously to other particle-bound nuclides (see below).
+
+PARTICLE-BOUND RADIONUCLIDES (e.g., Cs-137)
+
+A particle size of 0.1 to 1 um is typical for an aged - "accumulation mode" (AM) - aerosol (Mueller and Proehl, 1993).
+Indeed, for the Chernobyl accident, most authors reported that the aerosols were in the submicronic range (Sportisse, 2007).
+Adhesion of different radionuclides to particles of different size is assumed to be uniform, i.e., no specific sizes for specific nuclides are prefered 
+(Seibert, 2023). Aerosol surface (not number) concentration is the relevant quantity regarding particle sizes selected for modelling radionuclides 
+attached to aerosols (Seibert, 2023). [Atmospheric nuclear explosion certainly cause a different size distribution. But we focus here on nuclear accidents.
+In addition, there are hot particles (part of the nuclear fuel). The consequent size distribution depends on the situation with increasing fractionation 
+with transport time. Interestingly, hot particles contain a lot of Ru (not yet understood; Seibert, 2023)]. A key point is to have an aerosol model 
+in which the particulate radionuclides can be included (Sportisse, 2007). According to Kristiansen et al. (2016) Cs-137 size distribution measurements taken
+close to the Fuskushima-Daiichi (FDNPP) power plant suggested that accumulation mode (AM) sulfate aerosols were the main carriers of cesium. 
+The cesium released during the accident attached to the particles in the ambient air, approximately in proportion to their surface area. 
+The peak of the aerosol surface area distribution is generally in the AM, which in the area of FDNPP was typically dominated by sulfate. 
+Even though it is possible that some of the Cs-137 attached to other aerosol than sulfate, these aerosol components were likely mixed internally
+with the dominant AM sulfate aerosol and therefore should have similar removal properties. For accumulation-mode (AM) aerosol,
+the dominant removal process is wet deposition.
+
+The aerosol distribution (in the simplest case) follows a lognormal law of variance sigma, centered around the mean diameter (Sportisse, 2007). 
+The geometric mean "dquer" varies between dquer*dsig and dquer*dsig^-1 for 68% of particle diameters. The size of the emitted particles differed 
+according to the period after the Chernobyl accident. In the first weeks, emissions were in the submicronic range.
+In the second period (after the building of the sarcophage), the mean diameter was up to 6-7 um due to resuspension (Sportisse, 2007). 
+
+For most aerosol particles and in-cloud scavenging CCNeff >= INeff. The sum of CCNeff + CINeff is more important for the removal 
+efficiency than the individual choice of values (Grythe et al., 2017).
+
+Values from 0.1 to 10 for Crain and Csnow are supposed to cover the range of below-cloud scavenging rates seen in other ATMs (Van Leuven et al., 2023).
+There are in general large uncertainties tied to the efficiency of impaction scavenging (Grythe et al., 2017).
+Recent measurements have indicated that below-cloud scavenging contributes to the majority of the total wet deposition (Van Leuven et al., 2023).
+
+For particles >> 1 um, dry deposition combined with relatively fast gravitational settling take over as the most 
+important removal mechanisms and thus very little effect is seen from altering the wet removal parameters (Grythe et al., 2017).
+
+The most recent parameterization is available from Van Leuven et al. (2023) for Cs-137. All other particle-bound radionuclide characterizations
+are based on the very same dry and wet removal parameters and only altering the half-life. Thus, as first approximation further particle-bound
+radionculide species files can be generated based on the existing dry and wet removal parameters and just altering the half-life. 
+
+Alternatively to the default parameterization based on a single bin size, in Grythe et al. (2017) a more realistic aerosol size distribution 
+for Cs-137 was used. The mass was emitted in six different size bins ranging from d = 0.4 to 6.2 μm. The size bins with logarithmic mean diameters 
+of [0.4, 0.65, 1, 2.2, 4, and 6.2] μm received 1, 2, 10, 40, 32, and 15% of the emitted mass. Crain = Csnow = 1.0, CCNeff = INeff = 0.9. 
+Scavenging parameters are set to values believed to be valid for sulfate aerosols. 
+
+Both parameterizations above are based on or evaluated for Fuskushima data!
+
+Dry deposition may actually be different for different groups of radionuclides and influenced by differences in chemical properties (Rosner et al., 1989; 
+but not accounted for in the FP species definition). The dry deposition velocity of Cs-137 (and Cs-134), was found to be similar to that of Ag-110, 
+aerosol I-131 and Ba-140. Another group of radionuclides includes Ru-103, Ru-106, Sb-125, total I-131, Te-129 and Te-132. Mo-99, Ce-141 and Ce-144 
+are more likely to belong to the first group of radionuclides. The washout ratios show much more variation from one sampling interval to another than 
+do the dry deposition velocities. This is not unexpected since it is well known that the individual meteorological parameters strongly influence the 
+deposition behavior in each individual rainfall event (Rosner et al., 1989). The washout ratios of the individual radionuclides are much more similar 
+to each other than were the dry deposition velocities in dry periods.
+
+NOBLE GASES (e.g., Xe-133)
+
+Noble gases do not deposit. Only difference to a simply air tracer is their decay which must be set properly.
+
+OVERALL REMARKS:
+
+Radioactive decay can be considered a posteriori in post-processing unless when dealing with a quickly decaying nuclide like, e.g., Xe-135, 
+in comparison to the FLEXPART output time interval. Applying decay as postprocessing saves computation time! No decay should be applied online or a posteriori if 
+half-life is longer than ca. one month (e.g., Cs-137 or Sr-90; Seibert, 2023).
+
+All nuclides start as gases, then they condense onto aerosols. Most fugitive ones are Te, Cs and I, followed by Sr, Ru and Ce, 
+followed by the least fugitives ones U and Pu (Seibert, 2023). 
+
+In general, constant dry deposition velocities should be avoided. They do not describe the strong sensitivity with respect to the particle size distribution, 
+meteorological conditions and surface properties (Sportisse, 2007; Wesely & Hicks, 1977).
+
+The main uncertainties for below-cloud scavenging are actually related to the rain intensity and raindrop distribution (Sportisse, 2007; Asman, 1995).
+
+The scavenging by snow is poorly known and the measured data are usually not related to radionuclides. The uncertainties are 
+related to the large variety of types and shapes of solid hydrometeors. In many works, it is usually assumed that the scavenging coefficient
+is the same one as for rain (Sportisse, 2007).
+
+Scavenging parameters may depend on a case-by-case basis as there exist no unique globally representative values (Grythe et al., 2017).
+In a study by Quérel et al. (2021) none of the wet deposition schemes investigated were the best option to satisfy all the comparison criteria against observations
+under different configurations (e.g., meteorological input). At the current time, it is preferable to use several wet deposition schemes in 
+an ensemble modelling appproach if possible. However, total deposition results vary to a fairly small extent when compared with the orders of magnitude 
+of the differences between scavenging coefficients used in different models (Quérel et al., 2021).
+
+OTHER SPECIES
+
+Considering the non-radionuclide SPECIES files, N2O is added and HCHO is reintroduced. 
+
+Concerning the parameters for the wet deposition of non-radionuclides, for parameter A (for a ground level air temperature of 283.15 K), the ed here are the original ones from the Asman (1995), or calculated according to his method. For O3, NO2 and CH4 the diffusion coefficient in air, needed for this calculation was defined for 283.15 K from Langenberg et al. (2020). No experimental values were found for the other listed gases. The parameter B is the same for all gases, the original value of 0.62 according to Asman (1995) is kept.
+
+The simulation of dry deposition of gas needs values for D(iffusivity relative to diffusivity of H2O), H(enry's constant) and f0 (reactivity relative to that of O3), originally taken from Wesely (1989). The D values are kept (or corrected back to the ones) as in his table 2 (NH3, H2O2, HNO3, O3, NO, NO2, HNO2, PAN, SO2, HCHO). The relative diffusivity of the other listed gases (CO, SO2, CH4, C2H6, PCB28, G-HCH, N2O) could be calculated using the diffusivity of water (2.49E-05).
+
+The Henry’s law constants from a literature review can be found in https://henrys-law.org/henry/casrn/10028-15-6. When comparing the Wesely values with those in the database of this website (focus is on the originally measured values "M"), then the Wesely table 2 and the database show the same for: O3, NO, NO2, H2O2, HCHO, PAN. Or close enough, for example, the database shows 1.9E-5 mol/(m3⋅Pa) for NO (henrys-law.org), which corresponds to the rounded 2.0E-3 M/atm (Wesely 1989). Differences were found for HNO3, SO2, NH3 and HNO2, for these species, the values are adopted from the database. Newly added values based on henrys-law.org are included for CO, CH4, C2H6 and N2O. Concerning the persistent organic pollutants, for PCB28, the Henry’s law constant is kept and given the reference to Mackay et al., 2006, while for γ-HCH the value from Sahsuvar et al., 2003 is selected.
+
+f0 reactivity values can also be found in Wesely's Table 2. The values for CO and CH4 were found in Clifton et al., 2020. For others (C2H6 and N2O) they are not included but could be calculated.
+
+The density (rho) of particles is usually assumed to be about 2E3 kg/m3 as a commonly used value based on the density of soot. Regarding the mean geometric particle diameter (dquer) for SO4-aerosol and NO3-aerosol, the FLEXPART10 SPECIES files contain 4E-7 m. However, since a literature reference could not be found, now is chosen for 0.2e-7 m with a dsigma of 1.5 (Tunved et al. 2013; personal communication Nikolaos Evangeliou, 2023). 
+
+
+REFERENCES:
+
+Asman, W. A. H. (1995): Parametrisation of below-cloud scavenging of highly soluble gases under convective conditions. Atmospheric Environment 29 (12): 1359-1368.
+Atkinson, R. (1997): Gas-phase tropospheric chemistry of volatile organic compounds: 1. Alkanes and alkenes, J. Phys. Chem. Ref. Data, 26, 215–290.
+Bian, Q. et al. (2014): One-year observations of size distribution characteristics of major aerosol constituents at a coastal receptor site in Hong Kong – Part 1: Inorganic ions and oxalate, Atmos. Chem. Phys., 14, 9013–9027
+Clifton, O. E. et al. (2022). Large eddy simulation for investigating coupled forest canopy and turbulence influences on atmospheric chemistry. Journal Of Advances In Modeling Earth Systems, 14, e2022MS003078.
+Grythe, H. et al. (2017): A new aerosol wet removal scheme for the Lagrangian particle model FLEXPART v10. Geosci. Model Dev., 10: 1447-1466.
+Langenberg, S. et al. (2020): Technical note: Determination of binary gas-phase diffusion coefficients of unstable and adsorbing atmospheric trace gases at low temperature – arrested flow and twin tube method, Atmos. Chem. Phys., 20, 3669–3682.
+Mackay, D. et al. (2006): Hand Book of Physical–Chemical Properties and Environmental Fate for Organic Chemicals, CRC Press, Boca Raton, U.S.A.
+Mueller, H., and Proehl, G. (1993): ECOSYS-87: A dynamic model for assessing radiological consequences of nuclear accidents. Health Physics 64 (3): 232-252. 
+Nair, S.K. et al. (2000): A radioiodine speciation, deposition and dispersion model with uncertainty propagation for the Oak Ridge dose reconstruction. Health Physics 78 (4): 394-413.
+Querel, A. et al. (2021): Sensitivity study to select the wet deposition scheme in an operational atmospheric transport model. Journal of Environmental Radioactivity 237: 106712.
+Rosner, G. et al. (1989): Effect of dry deposition, washout and resuspension on radionuclide ratios after the Chernobyl accident. The Science of the Total Environment 90 (1-2).
+Seibert, P. (2023): Personal Communication. 
+Sahsuvar, L., P. A. Helm, L. M. Jantunen, and T. F. Bidleman (2003), Henry’s law constants for a-, b-, and g-hexachlorocyclohexanes(HCHs) as a function of temperature and revised estimates of gas exchange in Arctic regions, Atmos. Environ., 37, 983–992, doi:10.1016/S1352-2310(02)00936-6
+Sportisse, B. (2007): A review of parameterizations for modelling dry deposition and scavenging of radionuclides. Atmospheric Environment 41: 2683-2698.
+Tunved, P. et al. (2013): Arctic aerosol life cycle: linking aerosol size distributions observed between 2000 and 2010 with air mass transport and precipitation at Zeppelin station, Ny-Ålesund, Svalbard, Atmos. Chem. Phys., 13, 3643–3660.
+Van Leuven, S. et al. (2023): An optimisation method to improve modelling of wet deposition in atmospheric transport models: applied to FLEXPART v10.4. EGUsphere, in discussion.
+Wesely M. L. & Hicks B. B. (1977): Some Factors that Affect the Deposition Rates of Sulfur Dioxide and Similar Gases on Vegetation. Journal of the Air Pollution Control Association 27 (11): 1110-1116.

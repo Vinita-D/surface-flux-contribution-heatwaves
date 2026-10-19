@@ -1,0 +1,13 @@
+&SPECIES_PARAMS
+ PSPECIES="G-HCH",            ! Tracer name
+ PWETA_GAS=3.86E-5,           ! Below-cloud scavenging (gases) - A (weta_gas) [Calculated accord to Asman (1995)]
+ PWETB_GAS=0.62,              ! Below-cloud scavenging (gases) - B (wetb_gas) [Asman (1995)]
+ PRELDIFF=4.04,               ! Dry deposition (gases) - D [Calculated accord to Asman (1995)]
+ PHENRY=7.14E+02,             ! Dry deposition (gases) - Henrys const. [Sahsuvar et al.(2003)]
+ PF0=0.1,                     ! Dry deposition (gases) - f0 (reactivity) [slight redox potential]
+ PWEIGHTMOLAR=290.83,         ! molweight
+ PREACTIONS="OH",             ! List of reactions (must correspond to names in REAGENTS)
+ PCCONST=6.21E-11,            ! OH Reaction rate - C [cm^3/molecule/sec] [ref missing]
+ PDCONST=1203.0,              ! OH Reaction rate - D [K] [ref missing]
+ PNCONST=2.00,                ! OH Reaction rate - N (no unit) [ref missing]
+ /

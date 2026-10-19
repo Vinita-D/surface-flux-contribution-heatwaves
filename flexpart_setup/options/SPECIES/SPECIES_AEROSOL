@@ -1,0 +1,16 @@
+&SPECIES_PARAMS
+ PSPECIES="AEROSOL",          ! Tracer name
+ PCRAIN_AERO=1.0,             ! Below-cloud scavenging (particles) - Crain (crain_aero) [arbitrary value]
+ PCSNOW_AERO=1.0,             ! Below-cloud scavenging (particles) - Csnow (csnow_aero) [arbitrary value]
+ PCCN_AERO=0.9,               ! In-cloud scavenging (particles) - CCNeff (ccn_aero) [arbitrary value]
+ PIN_AERO=0.1,                ! In-cloud scavenging (particles) - INeff (in_aero) [arbitrary value]
+ PDENSITY=1.4E3,              ! Dry deposition (particles) - rho [arbitrary value]
+ PDIA=2.5E-07,                ! Dry deposition (particles) - dquer [arbitrary value]
+ PDSIGMA=1.25,                ! Dry deposition (particles) - dsig [arbitrary value]
+ PSHAPE=1,                    ! 0 for sphere, 1 any shape (defined by axes PLA,PIA,PSA), 2-cylinder, 3-cube, 4-tetrahedron, 5-octahedron, 6-ellipsoid
+ PASPECTRATIO=50.0            ! Aspect ratio of cylinders: works for PSHAPE=2 only
+ PLA=1.8E-06,                 ! Longest axis in meters (Bagheri & Bonadonna 2016): only for PSHAPE=1
+ PIA=0.6E-06,                 ! Intermediate axis in meters: only for PSHAPE=1
+ PSA=0.6E-06,                 ! Smallest axis in meters: only for PSHAPE=1
+ PORIENT=0,                   !  0 for random orientation of particles, 1 for horizontal, 2 for an average between random and horizontal
+ /

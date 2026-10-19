@@ -1,0 +1,11 @@
+&SPECIES_PARAMS
+ PSPECIES="Particulate-Radionuclide",             ! Tracer name: e.g. Y-92, Ru-106, I-131, Cs-137
+ PDECAY=-9.9,            ! Species half life [https://www.internetchemie.info/chemische-elemente/isotope.php] 
+ PCRAIN_AERO=3.6,             ! Below-cloud scavenging (particles) - Crain (crain_aero) [arbitrary value]
+ PCSNOW_AERO=1.4,             ! Below-cloud scavenging (particles) - Csnow (csnow_aero) [arbitrary value]
+ PCCN_AERO=1.8,               ! In-cloud scavenging (particles) - CCNeff (ccn_aero) [arbitrary value]
+ PIN_AERO=1.6,                ! In-cloud scavenging (particles) - INeff (in_aero) [arbitrary value]
+ PDENSITY=1900.0,             ! Dry deposition (particles) - rho [arbitrary value]
+ PDIA=0.65E-06,             ! Dry deposition (particles) - dquer [arbitrary value]
+ PDSIGMA=3.0,                 ! Dry deposition (particles) - dsig [arbitrary value]
+ /

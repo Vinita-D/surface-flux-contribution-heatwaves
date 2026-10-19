@@ -1,0 +1,11 @@
+&SPECIES_PARAMS
+ PSPECIES="Ru-106",           ! Tracer name: RUTHENIUM 106
+ PDECAY=-9.9,                 ! Species half life (32125075 sec) [https://www.internetchemie.info/chemische-elemente/isotope.php]
+ PCRAIN_AERO=3.6,             ! Below-cloud scavenging (particles) - Crain (crain_aero) [Grythe et al. (2017), Van Leuven et al. (2023)]
+ PCSNOW_AERO=1.4,             ! Below-cloud scavenging (particles) - Csnow (csnow_aero) [Grythe et al. (2017), Van Leuven et al. (2023)]
+ PCCN_AERO=1.8,               ! In-cloud scavenging (particles) - CCNeff (ccn_aero) [Grythe et al. (2017), Van Leuven et al. (2023)]
+ PIN_AERO=1.6,                ! In-cloud scavenging (particles) - INeff (in_aero) [Grythe et al. (2017), Van Leuven et al. (2023)]
+ PDENSITY=1900.0,             ! Dry deposition (particles) - rho [Van Leuven et al. (2023)]
+ PDIA=0.65E-06,             ! Dry deposition (particles) - dquer [Van Leuven et al. (2023)]
+ PDSIGMA=3.0,                 ! Dry deposition (particles) - dsig [Van Leuven et al. (2023)]
+ /

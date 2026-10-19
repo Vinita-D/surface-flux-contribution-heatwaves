@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --time=2-00:00:00
+#SBATCH --job-name=2007_summer_LINIT__heatwave
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=24
+#SBATCH --mem=100GB
+#SBATCH --output=2007_summer10days.log
+
+ulimit -s unlimited
+export OMP_NUM_THREADS=24
+
+
+module purge
+module load gcc
+module load netcdf-fortran/4.5.3-gcc-8.5.0-qsqbozc
+module load eccodes/2.21.0-gcc-8.5.0-zjundl7
+./FLEXPART_ETA

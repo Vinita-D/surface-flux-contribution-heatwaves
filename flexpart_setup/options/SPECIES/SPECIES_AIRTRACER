@@ -1,0 +1,4 @@
+&SPECIES_PARAMS
+ PSPECIES="AIRTRACER",        ! Tracer name
+ PWEIGHTMOLAR=29.0,           ! molweight
+ /

@@ -1,0 +1,5 @@
+&SPECIES_PARAMS
+ PSPECIES="Kr-85",            ! Tracer name: KRYPTON 85
+ PDECAY=-9.9,                 ! Species half life (338669519 sec) [https://www.internetchemie.info/chemische-elemente/isotope.php]
+ PWEIGHTMOLAR=-9.9,           ! molweight
+ /

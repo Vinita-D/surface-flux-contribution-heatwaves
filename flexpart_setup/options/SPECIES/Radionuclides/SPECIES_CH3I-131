@@ -1,0 +1,7 @@
+&SPECIES_PARAMS
+ PSPECIES="CH-3-I-131",       ! Tracer name: METHYL IODIDE
+ PDECAY=693382.0,             ! Species half life [https://www.internetchemie.info/chemische-elemente/isotope.php]
+ PWETA_GAS=8.0E-07,           ! Below-cloud scavenging (gases) - A (weta_gas) [Asman (1995), Paesler-Sauer (2003)]
+ PWETB_GAS=0.62,              ! Below-cloud scavenging (gases) - B (wetb_gas) [Asman (1995)]
+ PDRYVEL=0.1E-3,              ! Alternative: dry deposition velocity [Mueller and Proehl (1993), average of grass and soil]
+ /

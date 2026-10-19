@@ -1,0 +1,9 @@
+&SPECIES_PARAMS
+ PSPECIES="O3",               ! Tracer name
+ PWETA_GAS=7.43E-5,           ! Below-cloud scavenging (gases) - A (weta_gas) [Asman (1995), Langenberg (2020)]
+ PWETB_GAS=0.62,              ! Below-cloud scavenging (gases) - B (wetb_gas) [Asman (1995)]
+ PRELDIFF=1.6,                ! Dry deposition (gases) - D [Wesely (1989)]
+ PHENRY=1.0E-2,               ! Dry deposition (gases) - Henrys const. [Wesely (1989)]
+ PF0=1,                       ! Dry deposition (gases) - f0 (reactivity) [Wesely (1989)]
+ PWEIGHTMOLAR=48.0,           ! molweight
+ /

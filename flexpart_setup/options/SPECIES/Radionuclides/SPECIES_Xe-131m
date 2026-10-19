@@ -1,0 +1,4 @@
+&SPECIES_PARAMS
+ PSPECIES="Xe-131m",          ! Tracer name: XENON 131 metastable 
+ PDECAY=1023322.0,            ! Species half life [https://www.internetchemie.info/chemische-elemente/isotope.php]
+ /

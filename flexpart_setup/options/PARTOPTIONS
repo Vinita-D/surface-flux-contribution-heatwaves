@@ -1,0 +1,38 @@
+***************************************************************************************************************
+*                                                                                                             *
+*      Input file for the Lagrangian particle dispersion model FLEXPART                                       *
+*                           Please select which fields you would like to print in the partoutput files        *
+*                                                                                                             *
+***************************************************************************************************************
+&PARTOPTIONS
+  LONGITUDE=              .true., !
+  LONGITUDE_AVERAGE=      .false., !
+  LATITUDE=               .true., !
+  LATITUDE_AVERAGE=       .false., !
+  HEIGHT=                 .true., !
+  HEIGHT_AVERAGE=         .false., !
+  PV=                     .false., !
+  PV_AVERAGE=             .false., !
+  QV=                     .true., !
+  QV_AVERAGE=            .true., !
+  DENSITY=               .false., !
+  DENSITY_AVERAGE=       .true., !
+  TEMPERATURE=           .true., !
+  TEMPERATURE_AVERAGE=   .false., !
+  PRESSURE=              .true., !
+  PRESSURE_AVERAGE=      .false., !
+  MIXINGHEIGHT=          .false., !
+  MIXINGHEIGHT_AVERAGE=  .false., !
+  TROPOPAUSE=            .false., !
+  TROPOPAUSE_AVERAGE=    .false., !
+  TOPOGRAPHY=            .false., !
+  TOPOGRAPHY_AVERAGE=    .false., !
+  MASS=                  .false., !
+  MASS_AVERAGE=          .false., !
+  U=                     .false., !
+  U_AVERAGE=             .false., !
+  V=                     .false., !
+  V_AVERAGE=             .false., !
+  W=                     .false., !
+  W_AVERAGE=             .false., !
+  /
