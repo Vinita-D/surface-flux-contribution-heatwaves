@@ -1,5 +1,14 @@
 # surface-flux-contribution-heatwaves
-Lagrangian framework that splits the energy of heatwave air masses over Greece into its initial state and the contribution of surface heat fluxes along 10-day pathways (FLEXPART + ERA5, seven events, 1982-2025). Result: heatwave air starts with more energy and gains slightly less from the surface, mostly through less latent heating.
+To evaluate the role of surface turbulent fluxes for heatwaves, we build a Lagrangian framework in which the
+moist static energy (MSE) of an air mass at arrival is split into two parts: the MSE it already had at the start
+of a 10-day backward pathway, and the energy it gained from surface sensible and latent heat fluxes along the
+way. FLEXPART provides the transport, and ERA5 provides the surface fluxes.
+We apply it to seven Greek heatwaves (1982, 1987, 1988, 2007, 2021, 2024 and 2025). Over the ten days, the
+surface adds 5.4-6.5 kJ kg-1 to the heatwave air masses, of which sensible heating provides about 57% and
+latent heating the rest. On other summer days, the surface adds 6.1-6.8 kJ kg-1. In every event, the heatwave
+air therefore gains somewhat less energy from the surface (by 0.2-1.2 kJ kg-1), mainly because of lower latent
+heating, while it starts with more energy. The surface fluxes thus do not amplify the energy of heatwave air
+relative to other summer days, and the initial state matters even more. 
 ## What this is
 An air mass that arrives over Greece during a heatwave carries moist static energy (MSE). We split the MSE at
 arrival into two parts:
